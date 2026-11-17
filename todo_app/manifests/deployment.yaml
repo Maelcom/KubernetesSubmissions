@@ -14,4 +14,4 @@ spec:
     spec:
       containers:
         - name: todo-app
-          image: maelcom/todo-app:1.4
+          image: maelcom/todo_app:1.4
