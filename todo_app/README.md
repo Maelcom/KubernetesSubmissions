@@ -14,6 +14,6 @@ kubectl logs -f deployments/todo-app-dep
 ```
 ### Access app
 ```
-# instead of `kubectl port-forward` we now use a NodePort Service deployments/todo-app-dep 8000:8000
+# instead of `kubectl port-forward` we now use a NodePort Service
 curl http://localhost:8000
 ```
