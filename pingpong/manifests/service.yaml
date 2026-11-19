@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: pingpong-svc
+spec:
+  type: ClusterIP
+  selector:
+    app: pingpong # This is the app as declared in the deployment.
+  ports:
+    - protocol: TCP
+      port: 2348 # This is a port that is accessed by Ingress,
+      targetPort: 8002 # This is the port our app expects to listen.
