@@ -9,6 +9,7 @@ from flask import Flask
 PORT = int(os.getenv("PORT") or "8001")
 app = Flask(__name__)
 
+RANDOM_STRING = uuid.uuid4()
 
 @app.get("/")
 def home():
@@ -17,7 +18,7 @@ def home():
 
 def status_string():
     timestamp = dt.datetime.now().isoformat(timespec="milliseconds")
-    return f"{timestamp}: {uuid.uuid4()}"
+    return f"{timestamp}: {RANDOM_STRING}"
 
 
 def log_loop():
