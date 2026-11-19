@@ -4,7 +4,7 @@ Runs on the port specified by env var $PORT, default 8000.
 
 ### Recreate k3d cluster with port forward from host to agent node
 ```
-k3d cluster create -p 8000:30083@agent:0 --agents 2
+k3d cluster create -p 8081:80@loadbalancer --agents 2
 ```
 
 ### Deploy to existing k3d cluster
@@ -12,8 +12,9 @@ k3d cluster create -p 8000:30083@agent:0 --agents 2
 kubectl apply -f manifests
 kubectl logs -f deployments/todo-app-dep
 ```
+
 ### Access app
 ```
-# instead of `kubectl port-forward` we now use a NodePort Service
-curl http://localhost:8000
+# instead of port-forward or NodePort we now use Ingress Service
+curl http://localhost:8081
 ```
