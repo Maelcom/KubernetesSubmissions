@@ -12,6 +12,24 @@ spec:
       labels:
         app: log-output
     spec:
+      volumes:
+        - name: shared-files
+          emptyDir: {}
       containers:
-        - name: log-output
-          image: maelcom/log_output:1.7
+        - name: log-writer
+          image: maelcom/log_writer:1.10
+          volumeMounts:
+            - name: shared-files
+              mountPath: /app/files
+          env:
+            - name: LOG_FILE
+              value: "/app/files/log_output.log"
+
+        - name: log-reader
+          image: maelcom/log_reader:1.10
+          volumeMounts:
+            - name: shared-files
+              mountPath: /app/files
+          env:
+            - name: LOG_FILE
+              value: "/app/files/log_output.log"
