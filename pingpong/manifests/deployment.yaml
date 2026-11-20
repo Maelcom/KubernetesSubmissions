@@ -12,6 +12,16 @@ spec:
       labels:
         app: pingpong
     spec:
+      volumes:
+        - name: shared-files
+          persistentVolumeClaim:
+            claimName: shared-files-claim
       containers:
         - name: pingpong
-          image: maelcom/pingpong:1.9
+          image: maelcom/pingpong:1.11
+          volumeMounts:
+            - name: shared-files
+              mountPath: /app/files
+          env:
+            - name: PINGPONG_COUNTER_FILE
+              value: "/app/files/pong_count.log"

@@ -15,7 +15,7 @@ def status_string():
 def log_loop():
     while True:
         time.sleep(5)
-        with open(LOG_FILE, "a") as f:
+        with open(LOG_FILE, "w") as f:
             f.write(f"{status_string()}\n")
 
 

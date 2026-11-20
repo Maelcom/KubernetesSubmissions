@@ -1,5 +1,6 @@
 ## Pingpong app
 Responds to HTTP GET `/pingpong` with "pong `count`" where `count` is the counter of accepted requests.
+Also writes `count` to a shared file that `log_output/reader` can later read and print.
 
 Shares Ingress with `log_output` app.
 

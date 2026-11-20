@@ -14,10 +14,11 @@ spec:
     spec:
       volumes:
         - name: shared-files
-          emptyDir: {}
+          persistentVolumeClaim:
+            claimName: shared-files-claim
       containers:
         - name: log-writer
-          image: maelcom/log_writer:1.10
+          image: maelcom/log_writer:1.11
           volumeMounts:
             - name: shared-files
               mountPath: /app/files
@@ -26,10 +27,12 @@ spec:
               value: "/app/files/log_output.log"
 
         - name: log-reader
-          image: maelcom/log_reader:1.10
+          image: maelcom/log_reader:1.11
           volumeMounts:
             - name: shared-files
               mountPath: /app/files
           env:
             - name: LOG_FILE
               value: "/app/files/log_output.log"
+            - name: PINGPONG_COUNTER_FILE
+              value: "/app/files/pong_count.log"
