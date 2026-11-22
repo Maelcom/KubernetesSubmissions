@@ -12,6 +12,13 @@ spec:
       labels:
         app: todo-app
     spec:
+      volumes:
+        - name: shared-files
+          persistentVolumeClaim:
+            claimName: shared-files-claim
       containers:
         - name: todo-app
-          image: maelcom/todo_app:1.4
+          image: maelcom/todo_app:1.12
+          volumeMounts:
+            - name: shared-files
+              mountPath: /app/files
