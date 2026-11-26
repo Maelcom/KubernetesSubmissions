@@ -7,6 +7,8 @@ Shares Ingress with `log_output` app.
 ### Create k3d cluster with port forward from host to loadbalancer
 ```
 k3d cluster create -p 8081:80@loadbalancer --agents 2
+kubectl apply -f shared_storage/manifests
+docker exec k3d-k3s-default-agent-0 mkdir -p /tmp/kube
 ```
 
 ### Deploy to existing k3d cluster
