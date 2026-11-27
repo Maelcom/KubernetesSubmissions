@@ -18,7 +18,11 @@ spec:
             claimName: shared-files-claim
       containers:
         - name: todo-app
-          image: maelcom/todo_app:1.12
+          image: maelcom/todo_app:2.2
+          command: ["python", "app.py"]
           volumeMounts:
             - name: shared-files
               mountPath: /app/files
+          env:
+            - name: TODOS_BACKEND_URL
+              value: "http://todo-backend-svc:2349/todos"

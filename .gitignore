@@ -2,6 +2,9 @@
 .env
 .env.local
 
+# local network crutch
+registries.yaml
+
 # Python
 __pycache__/
 .pytest_cache/

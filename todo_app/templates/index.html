@@ -8,5 +8,18 @@
 <body>
     <h1>Todo App</h1>
     <img src="{{ url_for('shared_file', filename='placeholder.jpg') }}" alt="A nice picture">
+
+    <form method="POST" action="/todos">
+      <input type="text" name="todo-input" placeholder="new task..." maxlength="140">
+      <button type="submit">Add</button>
+    </form>
+
+    <h2>Todo list</h2>
+    <ul id="todo-list">
+        {% for todo in todos %}
+            <li>{{ todo }}</li>
+        {% endfor %}
+    </ul>
+
 </body>
 </html>
